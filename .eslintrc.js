@@ -21,6 +21,7 @@ module.exports = {
   plugins: ['react-hooks', 'react', '@typescript-eslint'],
   rules: {
     'object-curly-newline': 0,
+    'react/button-has-type': 0,
     'import/extensions': 0,
     'import/no-unresolved': 0,
     'react/react-in-jsx-scope': 0,
