@@ -1,0 +1,10 @@
+{
+  "cSpell.words": ["craco"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["typescriptreact", "typescript", "javascript", "javascriptreact"]
+}
