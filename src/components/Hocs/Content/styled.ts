@@ -1,8 +1,10 @@
+import { RouteEnum } from '@appTypes/enums/global'
 import Box from '@mui/material/Box'
 import { styled } from '@mui/material/styles'
 
-export const StyledWrapper = styled(Box)(({ theme }) => ({
-  background: theme.palette.background.default,
+export const StyledWrapper = styled(Box)<{ type: RouteEnum }>(({ theme, type }) => ({
+  background:
+    type === RouteEnum.PUBLIC ? theme.palette.background.paper : theme.palette.background.default,
   overflow: 'hidden',
 
   '> .MuiBox-root': {

@@ -1,5 +1,7 @@
+import { Wrapper } from './styled'
+
 const SignIn = () => {
-  return <div>Sign In</div>
+  return <Wrapper>Sign In</Wrapper>
 }
 
 export default SignIn

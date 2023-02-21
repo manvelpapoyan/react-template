@@ -1,4 +1,4 @@
-export enum IncrementAndDecrement {
-  INCREMENT = 0,
-  DECREMENT = 1,
+export enum RouteEnum {
+  PRIVATE = 'private',
+  PUBLIC = 'public'
 }

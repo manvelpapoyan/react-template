@@ -1,12 +1,18 @@
+import { RouteEnum } from '@appTypes/enums/global'
 import Box from '@mui/material/Box'
 import { StyledWrapper } from './styled'
 
-const ContentWrapper = ({ children }: any) => {
+interface IContent {
+  type: RouteEnum
+  children: any
+}
+
+const Content = ({ type, children }: IContent) => {
   return (
-    <StyledWrapper>
+    <StyledWrapper type={type}>
       <Box>{children}</Box>
     </StyledWrapper>
   )
 }
 
-export default ContentWrapper
+export default Content

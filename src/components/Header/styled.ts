@@ -1,3 +1,4 @@
+import { RouteEnum } from '@appTypes/enums/global'
 import { Box } from '@mui/material'
 import AppBar from '@mui/material/AppBar'
 import { styled } from '@mui/material/styles'
@@ -26,11 +27,11 @@ export const StyledAppBar = styled(AppBar)(({ theme }) => ({
   }
 }))
 
-export const LogoWrapper = styled(Box)(({ theme }) => ({
+export const LogoWrapper = styled(Box)<{ type: RouteEnum }>(({ type }) => ({
   flexGrow: 1,
-  height: '25px',
+  height: type === RouteEnum.PRIVATE ? '25px' : '30px',
 
   img: {
-    height: '25px'
+    height: type === RouteEnum.PRIVATE ? '25px' : '30px'
   }
 }))

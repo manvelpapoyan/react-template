@@ -1,7 +1,7 @@
 import * as React from 'react'
-import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import Container from '@mui/material/Container'
+import { RouteEnum } from '@appTypes/enums/global'
 
 import Logo from '@components/common/Logo'
 import { StyledAppBar, LogoWrapper } from './styled'
@@ -19,12 +19,16 @@ import { StyledAppBar, LogoWrapper } from './styled'
 // const pages = ['Products', 'Pricing', 'Blog']
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 
-function Header() {
+interface IHeader {
+  type: RouteEnum
+}
+
+function Header({ type }: IHeader) {
   return (
     <StyledAppBar>
       <Container maxWidth='xl'>
         <Toolbar>
-          <LogoWrapper>
+          <LogoWrapper type={type}>
             <Logo />
           </LogoWrapper>
 

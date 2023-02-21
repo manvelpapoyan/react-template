@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { Forgot, SignIn, Home } from '@pages'
 
-import { RouteEnum } from '@utils/const'
+import { RouteEnum } from '@appTypes/enums/global'
 import LayoutPrivate from '@layout/Private'
 import LayoutPublic from '@layout/Public'
 import { ErrorBoundary } from '@components'
@@ -18,12 +18,12 @@ const publicRoutes = [
   {
     path: '/auth/sign-in',
     type: RouteEnum.PUBLIC,
-    element: <Forgot />
+    element: <SignIn />
   },
   {
     path: '/auth/forgot-password',
     type: RouteEnum.PUBLIC,
-    element: <SignIn />
+    element: <Forgot />
   }
 ]
 

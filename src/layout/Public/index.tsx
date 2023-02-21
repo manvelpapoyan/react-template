@@ -1,8 +1,11 @@
-import { useEffect } from 'react'
+import { RouteEnum } from '@appTypes/enums/global'
+import { Header } from '@components'
+import Content from '@components/Hocs/Content'
+import { useEffect, memo } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 
 function LayoutPublic() {
-  const user = { name: 'david' }
+  const user = {}
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -10,15 +13,16 @@ function LayoutPublic() {
       // redirect to Private(user) layout
       navigate('/')
     }
-  }, [user])
-
-  // ...loader
+  }, [])
 
   return (
-    <div>
-      <Outlet />
-    </div>
+    <>
+      <Header type={RouteEnum.PRIVATE} />
+      <Content type={RouteEnum.PUBLIC}>
+        <Outlet />
+      </Content>
+    </>
   )
 }
 
-export default LayoutPublic
+export default memo(LayoutPublic)
