@@ -1,11 +1,6 @@
 import { css } from '@mui/material/styles'
-import { COLORS } from '@utils/colors'
 
-const generalCSS = css`
-    html {
-      background: ${COLORS.gray};
-    }
-    
+const generalCSS = css`    
     * {
       margin: 0;
       padding: 0;

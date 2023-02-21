@@ -24,14 +24,6 @@ const theme = createTheme({
         }
       }
     }
-  },
-  bg: {
-    background: COLORS.gray,
-    contentWrapper: COLORS.white
-  },
-  text: {
-    main: 'white',
-    light: 'white'
   }
 })
 

@@ -18,8 +18,8 @@
       "@appTypes/*": ["appTypes/*"],
       "@store": ["store"],
       "@store/*": ["store/*"],
-      "@svgs": ["svgs"],
-      "@svgs/*": ["svgs/*"]
+      "@svgs": ["assets/svgs"],
+      "@svgs/*": ["assets/svgs/*"]
     }
   }
 }

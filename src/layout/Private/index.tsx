@@ -3,6 +3,7 @@ import { Outlet, useNavigate } from 'react-router-dom'
 
 import Box from '@mui/material/Box'
 import Header from '@components/Header'
+import ContentWrapper from '@components/Hocs/Content'
 
 function LayoutPrivate() {
   const user = { name: 'david' }
@@ -20,7 +21,9 @@ function LayoutPrivate() {
   return (
     <Box>
       <Header />
-      <Outlet />
+      <ContentWrapper>
+        <Outlet />
+      </ContentWrapper>
     </Box>
   )
 }

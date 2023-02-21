@@ -2,8 +2,9 @@ import * as React from 'react'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import Container from '@mui/material/Container'
-import LogoSvg from '../../assets/svgs/MR Recip.svg'
-import { StyledAppBar } from './styled'
+
+import Logo from '@components/common/Logo'
+import { StyledAppBar, LogoWrapper } from './styled'
 
 // import IconButton from '@mui/material/IconButton'
 // import Typography from '@mui/material/Typography'
@@ -22,13 +23,10 @@ function Header() {
   return (
     <StyledAppBar>
       <Container maxWidth='xl'>
-        <Toolbar variant='regular'>
-          <Box sx={{ flexGrow: 1 }}>
-            <img src={LogoSvg} alt='Logo' loading='lazy' />
-          </Box>
-          <Box sx={{ flexGrow: 1 }}>
-            <img src={LogoSvg} alt='Logo' loading='lazy' />
-          </Box>
+        <Toolbar>
+          <LogoWrapper>
+            <Logo />
+          </LogoWrapper>
 
           {/* <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <Menu

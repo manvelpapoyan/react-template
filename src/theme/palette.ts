@@ -7,7 +7,7 @@ export const palette: PaletteOptions = {
     primary: COLORS.black
   },
   background: {
-    default: COLORS.white,
+    default: COLORS.gray,
     paper: COLORS.white
   }
 }

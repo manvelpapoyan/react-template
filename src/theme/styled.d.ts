@@ -1,16 +1,7 @@
 import 'styled-components'
 import { Theme } from '@mui/material/styles'
 
-interface CustomTheme {
-  bg: {
-    background: string
-    contentWrapper: string
-  }
-  text: {
-    main: string
-    light: string
-  }
-}
+interface CustomTheme {}
 declare module '@mui/material/styles' {
   interface Theme extends CustomTheme {}
   interface ThemeOptions extends CustomTheme {}
