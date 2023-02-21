@@ -20,6 +20,7 @@ module.exports = {
   },
   plugins: ['react-hooks', 'react', '@typescript-eslint'],
   rules: {
+    'react/jsx-closing-bracket-location': 1,
     'no-undef': 0,
     'no-shadow': 0,
     'no-bitwise': 0,

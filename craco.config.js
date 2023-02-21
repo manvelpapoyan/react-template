@@ -23,8 +23,9 @@ module.exports = () => {
         '@styles': path.resolve(__dirname, 'src/styles'),
         '@utils': path.resolve(__dirname, 'src/utils'),
         '@layout': path.resolve(__dirname, 'src/layout'),
-        '@types': path.resolve(__dirname, 'src/types'),
-        '@store': path.resolve(__dirname, 'src/store')
+        '@appTypes': path.resolve(__dirname, 'src/appTypes'),
+        '@store': path.resolve(__dirname, 'src/store'),
+        '@svgs': path.resolve(__dirname, 'src/assets/svgs')
       }
     }
   }

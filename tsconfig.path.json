@@ -14,10 +14,12 @@
       "@utils/*": ["utils/*"],
       "@layout": ["layout"],
       "@layout/*": ["layout/*"],
-      "@types": ["types"],
-      "@types/*": ["types/*"],
+      "@appTypes": ["appTypes"],
+      "@appTypes/*": ["appTypes/*"],
       "@store": ["store"],
-      "@store/*": ["store/*"]
+      "@store/*": ["store/*"],
+      "@svgs": ["svgs"],
+      "@svgs/*": ["svgs/*"]
     }
   }
 }

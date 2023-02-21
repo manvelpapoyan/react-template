@@ -1,4 +1,4 @@
-import { IUserModel } from '@types/model/user.model'
+import { IUserModel } from '@appTypes/model/user.model'
 
 export interface IAuthState {
   accessToken: string

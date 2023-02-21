@@ -2,13 +2,29 @@ import 'styled-components'
 import { Theme } from '@mui/material/styles'
 
 interface CustomTheme {
-  // ...
+  bg: {
+    background: string
+    contentWrapper: string
+  }
+  text: {
+    main: string
+    light: string
+  }
 }
 declare module '@mui/material/styles' {
-  // eslint-disable-next-line no-unused-vars
   interface Theme extends CustomTheme {}
-  // eslint-disable-next-line no-unused-vars
   interface ThemeOptions extends CustomTheme {}
+
+  interface BreakpointOverrides {
+    xs: true // removes the `xs` breakpoint
+    sm: true
+    md: true
+    lg: true
+    l: true
+    xl: true
+    el: true
+    eel: true
+  }
 }
 
 declare module 'styled-components' {
