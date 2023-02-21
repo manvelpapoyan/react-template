@@ -30,6 +30,8 @@ module.exports = {
     'react/button-has-type': 0,
     'prefer-arrow-callback': 0,
     'operator-linebreak': 0,
+    'no-param-reassign': 0,
+    'implicit-arrow-linebreak': 0,
     'import/no-extraneous-dependencies': 0,
     'react/jsx-no-constructed-context-values': 0,
     'import/prefer-default-export': 0,

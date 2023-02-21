@@ -13,7 +13,11 @@
       "@utils": ["utils"],
       "@utils/*": ["utils/*"],
       "@layout": ["layout"],
-      "@layout/*": ["layout/*"]
+      "@layout/*": ["layout/*"],
+      "@types": ["types"],
+      "@types/*": ["types/*"],
+      "@store": ["store"],
+      "@store/*": ["store/*"]
     }
   }
 }

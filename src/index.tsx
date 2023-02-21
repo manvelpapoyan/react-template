@@ -1,20 +1,25 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { Provider } from 'react-redux'
 
 import { ThemeProvider } from '@mui/material'
 
 import generalCSS from '@styles/general'
 import GlobalStyles from '@mui/material/GlobalStyles'
+import { store } from './store'
 import theme from './theme'
 
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+
 root.render(
   <ThemeProvider theme={theme}>
     <GlobalStyles styles={generalCSS} />
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </ThemeProvider>
 )
 
