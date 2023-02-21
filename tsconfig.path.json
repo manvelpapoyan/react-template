@@ -5,7 +5,11 @@
       "@pages": ["pages"],
       "@pages/*": ["pages/*"],
       "@components": ["components"],
-      "@components/*": ["components/*"]
+      "@components/*": ["components/*"],
+      "@theme": ["theme"],
+      "@theme/*": ["theme/*"],
+      "@styles": ["styles"],
+      "@styles/*": ["styles/*"]
     }
   }
 }
