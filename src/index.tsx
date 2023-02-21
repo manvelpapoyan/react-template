@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+
 import { ThemeProvider } from '@mui/material'
 
 import generalCSS from '@styles/general'
