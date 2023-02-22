@@ -1,7 +1,9 @@
-import StyledButton from './styled'
+import React from 'react'
 
-const Button = () => {
-  return <StyledButton>Click</StyledButton>
+import MuiButton from '@mui/material/Button'
+
+const Button = ({ children }: { children: string | React.ReactNode }) => {
+  return <MuiButton>{children}</MuiButton>
 }
 
 export default Button
