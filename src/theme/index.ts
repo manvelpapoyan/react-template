@@ -71,6 +71,7 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
+          textTransform: 'none',
           background: '#201F21',
           border: '1px solid #000',
           color: '#fff',

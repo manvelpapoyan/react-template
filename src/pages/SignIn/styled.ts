@@ -33,6 +33,13 @@ export const Wrapper = styled(Box)(({ theme }) => ({
     marginTop: '60px',
     marginBottom: '20px'
   },
+  '.MuiTypography-body1': {
+    fontSize: '15px',
+    lineHeight: '18px',
+    textDecorationLine: 'underline',
+    color: 'rgba(32, 31, 33, 0.5)',
+    cursor: 'pointer'
+  },
 
   [theme.breakpoints.down('xl')]: {}
 }))
