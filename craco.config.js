@@ -25,7 +25,10 @@ module.exports = () => {
         '@layout': path.resolve(__dirname, 'src/layout'),
         '@appTypes': path.resolve(__dirname, 'src/appTypes'),
         '@store': path.resolve(__dirname, 'src/store'),
-        '@svgs': path.resolve(__dirname, 'src/assets/svgs')
+        '@svgs': path.resolve(__dirname, 'src/assets/svgs'),
+        '@configs': path.resolve(__dirname, 'src/configs'),
+        '@services': path.resolve(__dirname, 'src/services'),
+        '@api': path.resolve(__dirname, 'src/api')
       }
     }
   }

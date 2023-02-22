@@ -28,8 +28,10 @@ export interface IRegisterPayload {
 }
 
 export interface ILoginResponse {
-  accessToken: string
-  refreshToken: string
+  data: {
+    accessToken: string
+    refreshToken: string
+  }
 }
 
 export interface IUpdatePassword {

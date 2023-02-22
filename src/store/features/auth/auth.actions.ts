@@ -1,26 +1,29 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import { ILoginPayload, IUpdatePassword, IRegisterPayload } from '@store/features/auth/auth.types'
-// import AuthService from '@services/AuthService'
-// import StorageManager from '@utils/storage-manager'
-// import { StorageKeysEnum } from '@utils/constants'
+import AuthService from '@services/AuthService'
+import StorageManager from '@utils/storage-manager'
+import { StorageKeysEnum } from '@utils/constants'
 
 export const loginThunk = createAsyncThunk(
   'auth/login',
   async (payload: ILoginPayload, { rejectWithValue }) => {
-    // try {
-    //   const { data: tokens } = await AuthService.login(payload)
-    //   StorageManager.setString(StorageKeysEnum.ACCESS_TOKEN, tokens.accessToken)
-    //   StorageManager.setString(StorageKeysEnum.REFRESH_TOKEN, tokens.refreshToken)
-    //   const { data: user } = await AuthService.getProfile()
-    //   StorageManager.setItem(StorageKeysEnum.USER, user)
-    //   return {
-    //     ...tokens,
-    //     user
-    //   }
-    // } catch (error: any) {
-    //   return rejectWithValue(error.data.details[0].message as string)
-    // }
+    try {
+      const response = await AuthService.login(payload)
+
+      StorageManager.setString(StorageKeysEnum.ACCESS_TOKEN, response.data.data.accessToken)
+      StorageManager.setString(StorageKeysEnum.REFRESH_TOKEN, response.data.data.refreshToken)
+
+      const { data: user } = await AuthService.getProfile()
+      StorageManager.setItem(StorageKeysEnum.USER, user)
+
+      return {
+        ...response.data.data,
+        user
+      }
+    } catch (error: any) {
+      return rejectWithValue(error.data.details[0].message as string)
+    }
   }
 )
 

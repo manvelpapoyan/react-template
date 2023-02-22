@@ -2,8 +2,13 @@ import React from 'react'
 
 import MuiButton from '@mui/material/Button'
 
-const Button = ({ children }: { children: string | React.ReactNode }) => {
-  return <MuiButton>{children}</MuiButton>
+interface IButton {
+  children: string | React.ReactNode
+  type: 'submit' | 'button'
+}
+
+const Button = ({ children, ...rest }: IButton) => {
+  return <MuiButton {...rest}>{children}</MuiButton>
 }
 
 export default Button

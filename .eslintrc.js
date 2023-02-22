@@ -24,6 +24,7 @@ module.exports = {
     'react/jsx-no-useless-fragment': 0,
     'react/jsx-wrap-multilines': 0,
     'react/jsx-props-no-spreading': 0,
+    'consistent-return': 0,
     'no-undef': 0,
     'no-shadow': 0,
     'no-bitwise': 0,

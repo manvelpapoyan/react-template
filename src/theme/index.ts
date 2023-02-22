@@ -8,6 +8,26 @@ const theme = createTheme({
     values: breakpoints
   },
   components: {
+    MuiFormControlLabel: {
+      styleOverrides: {
+        root: {
+          height: '18px',
+          margin: '18px 0 10px 0',
+
+          '.MuiTypography-root': {
+            marginLeft: '8px'
+          }
+        }
+      }
+    },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          color: 'red',
+          fontSize: '10px'
+        }
+      }
+    },
     MuiCheckbox: {
       styleOverrides: {
         root: {
@@ -19,17 +39,15 @@ const theme = createTheme({
         }
       }
     },
-    MuiFormControl: {
-      styleOverrides: {
-        root: {
-          gap: '10px'
-        }
-      }
-    },
     MuiCssBaseline: {
       styleOverrides: {
         '*': {
           boxSizing: 'border-box !important'
+        },
+        '.Mui-error': {
+          '.MuiInputBase-input': {
+            border: '1px solid red'
+          }
         }
       }
     },

@@ -11,20 +11,15 @@ export const Wrapper = styled(Box)(({ theme }) => ({
 
   '.MuiBox-root': {
     '.MuiFormControl-root': {
-      ':nth-child(1)': {
+      ':nth-of-type(1)': {
         marginTop: '60px'
       },
-      ':nth-child(2)': {
+      ':nth-of-type(2)': {
         marginTop: '20px'
       }
     },
-    '.MuiFormControlLabel-root': {
-      height: '18px',
-      margin: '18px 0 0 0',
-
-      '.MuiTypography-root': {
-        marginLeft: '8px'
-      }
+    '.MuiFormLabel-root': {
+      marginBottom: '10px'
     }
   },
 

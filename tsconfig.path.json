@@ -19,7 +19,13 @@
       "@store": ["store"],
       "@store/*": ["store/*"],
       "@svgs": ["assets/svgs"],
-      "@svgs/*": ["assets/svgs/*"]
+      "@svgs/*": ["assets/svgs/*"],
+      "@configs": ["configs"],
+      "@configs/*": ["configs/*"],
+      "@services": ["services"],
+      "@services/*": ["services/*"],
+      "@api": ["api"],
+      "@api/*": ["api/*"]
     }
   }
 }
