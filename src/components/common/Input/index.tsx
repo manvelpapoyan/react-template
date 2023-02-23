@@ -1,5 +1,7 @@
+import { useState, memo } from 'react'
 import { FormControl, InputLabel, FormHelperText } from '@mui/material'
-
+import VisibilityIcon from '@mui/icons-material/Visibility'
+import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import { StyledInput } from './styled'
 
 interface IInput {
@@ -12,13 +14,29 @@ interface IInput {
   errors: Record<string, any>
 }
 
-const Input = ({ key, label, register, errors, ...rest }: IInput) => {
+const Input = ({ label, register, errors, type, ...rest }: IInput) => {
+  const [isEyeOpen, setEyeOpen] = useState(false)
+
   return (
     <FormControl variant='standard'>
-      <InputLabel shrink htmlFor={key} error={!!errors[rest.name]}>
+      <InputLabel shrink htmlFor={type} error={!!errors[rest.name]}>
         {label}
       </InputLabel>
-      <StyledInput id={key} {...rest} {...register} error={!!errors[rest.name]} />
+      <StyledInput
+        error={!!errors[rest.name]}
+        type={type === 'password' ? (!isEyeOpen ? 'password' : 'text') : type}
+        endAdornment={
+          type === 'password' ? (
+            !isEyeOpen ? (
+              <VisibilityOff onClick={() => setEyeOpen(!isEyeOpen)} />
+            ) : (
+              <VisibilityIcon onClick={() => setEyeOpen(!isEyeOpen)} />
+            )
+          ) : null
+        }
+        {...rest}
+        {...register}
+      />
       <FormHelperText>
         {errors && errors[rest.name] ? errors[rest.name].message : ''}
       </FormHelperText>
@@ -26,4 +44,4 @@ const Input = ({ key, label, register, errors, ...rest }: IInput) => {
   )
 }
 
-export default Input
+export default memo(Input)
