@@ -1,28 +1,35 @@
-import { useEffect } from 'react'
+import { useEffect, memo } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 
-import Box from '@mui/material/Box'
 import Header from '@components/Header'
+import Content from '@components/Hocs/Content'
+import { RouteEnum } from '@appTypes/enums/global'
+import { PAGE_ROUTES_PUBLIC } from '@appTypes/enums/pages'
+import { useAppDispatch, useAppSelector } from '@store/hooks'
+import { profileThunk } from '@store/features/auth/auth.actions'
 
 function LayoutPrivate() {
-  const user = { name: 'david' }
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
+  const login = useAppSelector((state) => state.auth.login)
+  const user = useAppSelector((state) => state.auth.user)
 
   useEffect(() => {
-    if (user === null || !Object.keys(user).length) {
-      // redirect to Public(without user) layout
-      navigate('/auth/sign-in')
+    if (user === null) {
+      dispatch(profileThunk())
+        .unwrap()
+        .catch(() => navigate(PAGE_ROUTES_PUBLIC.SIGN_IN))
     }
-  }, [user])
-
-  // ...loader
+  }, [])
 
   return (
-    <Box>
-      <Header />
-      <Outlet />
-    </Box>
+    <>
+      <Header type={RouteEnum.PRIVATE} />
+      <Content type={RouteEnum.PRIVATE}>
+        {login.isLoading ? <div>Loading ...</div> : <Outlet />}
+      </Content>
+    </>
   )
 }
 
-export default LayoutPrivate
+export default memo(LayoutPrivate)

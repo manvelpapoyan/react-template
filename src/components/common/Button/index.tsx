@@ -1,7 +1,14 @@
-import StyledButton from './styled'
+import React from 'react'
 
-const Button = () => {
-  return <StyledButton>Click</StyledButton>
+import MuiButton from '@mui/material/Button'
+
+interface IButton {
+  children: string | React.ReactNode
+  type: 'submit' | 'button'
+}
+
+const Button = ({ children, ...rest }: IButton) => {
+  return <MuiButton {...rest}>{children}</MuiButton>
 }
 
 export default Button

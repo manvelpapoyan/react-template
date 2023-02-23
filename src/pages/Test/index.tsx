@@ -1,11 +1,11 @@
 import LinkTo from '@components/common/LinkTo'
 
-const Home = () => {
+const Test = () => {
   return (
     <div>
-      <LinkTo href='/test'>home</LinkTo>
+      <LinkTo href='/'>Test</LinkTo>
     </div>
   )
 }
 
-export default Home
+export default Test

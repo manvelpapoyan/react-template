@@ -1,16 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 import { IAuthState } from '@store/features/auth/auth.types'
-import {
-  loginThunk,
-  logoutThunk,
-  registerThunk,
-  updatePasswordThunk
-} from '@store/features/auth/auth.actions'
+import { loginThunk, logoutThunk, profileThunk } from '@store/features/auth/auth.actions'
+import StorageManager from '@utils/storage-manager'
+import { StorageKeysEnum } from '@utils/constants'
 
 const initialState: IAuthState = {
-  accessToken: '', // StorageManager.getString(StorageKeysEnum.ACCESS_TOKEN) || '',
-  refreshToken: '', // StorageManager.getString(StorageKeysEnum.REFRESH_TOKEN) || '',
+  accessToken: StorageManager.getString(StorageKeysEnum.ACCESS_TOKEN) || '',
+  refreshToken: StorageManager.getString(StorageKeysEnum.REFRESH_TOKEN) || '',
   errors: null,
   login: {
     isLoading: false,
@@ -32,40 +29,38 @@ const authSlice = createSlice({
       state.register.error = ''
     }
   },
-  extraReducers: (builder) =>
+  extraReducers: (builder) => {
     builder
       .addCase(loginThunk.pending, (state) => {
-        // state.login.isLoading = true
+        state.login.isLoading = true
       })
       .addCase(loginThunk.fulfilled, (state, { payload }) => {
-        // state.login.isLoading = false
-        // state.accessToken = payload.accessToken
-        // state.refreshToken = payload.refreshToken
-        // state.user = payload.user
+        state.login.isLoading = false
+        state.accessToken = payload.accessToken
+        state.refreshToken = payload.refreshToken
+        state.user = payload.user
       })
       .addCase(loginThunk.rejected, (state, { payload }) => {
-        // state.login.isLoading = false
-        // state.login.error = payload as string
+        state.login.isLoading = false
+        state.login.error = payload as string
       })
-      .addCase(logoutThunk.pending, (state) => {
-        // state.accessToken = ''
-        // state.refreshToken = ''
-        // state.user = null
+      // .addCase(logoutThunk.pending, (state) => {
+      //   state.accessToken = ''
+      //   state.refreshToken = ''
+      //   state.user = null
+      // })
+      .addCase(profileThunk.pending, (state) => {
+        state.login.isLoading = true
       })
-
-      .addCase(updatePasswordThunk.rejected, (state, { payload }) => {
-        // state.errors = (payload as any).data
+      .addCase(profileThunk.fulfilled, (state, { payload }) => {
+        state.login.isLoading = false
+        state.user = payload.user
       })
-      .addCase(registerThunk.pending, (state) => {
-        // state.register.isLoading = true
+      .addCase(profileThunk.rejected, (state, { payload }) => {
+        state.login.isLoading = false
+        state.login.error = payload as string
       })
-      .addCase(registerThunk.fulfilled, (state) => {
-        // state.register.isLoading = false
-      })
-      .addCase(registerThunk.rejected, (state, { payload }) => {
-        // state.register.isLoading = false
-        // state.register.error = payload as string
-      })
+  }
 })
 
 export const { clearErrors } = authSlice.actions

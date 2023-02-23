@@ -2,10 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 
-import { ThemeProvider } from '@mui/material'
+import { CssBaseline, ThemeProvider } from '@mui/material'
 
-import generalCSS from '@styles/general'
-import GlobalStyles from '@mui/material/GlobalStyles'
+// import generalCSS from '@styles/general'
+// import GlobalStyles from '@mui/material/GlobalStyles'
 import { store } from './store'
 import theme from './theme'
 
@@ -15,12 +15,12 @@ import reportWebVitals from './reportWebVitals'
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
-  <ThemeProvider theme={theme}>
-    <GlobalStyles styles={generalCSS} />
-    <Provider store={store}>
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <App />
-    </Provider>
-  </ThemeProvider>
+    </ThemeProvider>
+  </Provider>
 )
 
 // If you want to start measuring performance in your app, pass a function

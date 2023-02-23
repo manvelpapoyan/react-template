@@ -1,24 +1,30 @@
-import { useEffect } from 'react'
+import { RouteEnum } from '@appTypes/enums/global'
+import { PAGE_ROUTES_PRIVATE } from '@appTypes/enums/pages'
+import { Header } from '@components'
+import Content from '@components/Hocs/Content'
+import { useAppSelector } from '@store/hooks'
+import { useEffect, memo } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 
 function LayoutPublic() {
-  const user = { name: 'david' }
+  const user = useAppSelector((state) => state.auth.user)
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (user && Object.keys(user).length) {
+    if (user !== null) {
       // redirect to Private(user) layout
-      navigate('/')
+      navigate(PAGE_ROUTES_PRIVATE.HOME)
     }
   }, [user])
 
-  // ...loader
-
   return (
-    <div>
-      <Outlet />
-    </div>
+    <>
+      <Header type={RouteEnum.PRIVATE} />
+      <Content type={RouteEnum.PUBLIC}>
+        <Outlet />
+      </Content>
+    </>
   )
 }
 
-export default LayoutPublic
+export default memo(LayoutPublic)

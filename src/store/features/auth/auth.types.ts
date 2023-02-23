@@ -1,4 +1,4 @@
-import { IUserModel } from '@types/model/user.model'
+import { IUserModel } from '@appTypes/model/user.model'
 
 export interface IAuthState {
   accessToken: string
@@ -18,6 +18,7 @@ export interface IAuthState {
 export interface ILoginPayload {
   email: string
   password: string
+  rememberMe?: boolean
 }
 export interface IRegisterPayload {
   email: string
@@ -28,8 +29,10 @@ export interface IRegisterPayload {
 }
 
 export interface ILoginResponse {
-  accessToken: string
-  refreshToken: string
+  data: {
+    accessToken: string
+    refreshToken: string
+  }
 }
 
 export interface IUpdatePassword {
