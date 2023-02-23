@@ -2,8 +2,12 @@ import * as React from 'react'
 import Toolbar from '@mui/material/Toolbar'
 import Container from '@mui/material/Container'
 import { RouteEnum } from '@appTypes/enums/global'
+import { PAGE_ROUTES_PRIVATE, PAGE_ROUTES_PUBLIC } from '@appTypes/enums/pages'
 
 import Logo from '@components/common/Logo'
+import LinkTo from '@components/common/LinkTo'
+import { useAppSelector } from '@store/hooks'
+
 import { StyledAppBar, LogoWrapper } from './styled'
 
 // import IconButton from '@mui/material/IconButton'
@@ -24,12 +28,16 @@ interface IHeader {
 }
 
 function Header({ type }: IHeader) {
+  const user = useAppSelector((state) => state.auth.user)
+
   return (
     <StyledAppBar>
       <Container maxWidth='xl'>
         <Toolbar>
           <LogoWrapper type={type}>
-            <Logo />
+            <LinkTo href={user === null ? PAGE_ROUTES_PUBLIC.SIGN_IN : PAGE_ROUTES_PRIVATE.HOME}>
+              <Logo />
+            </LinkTo>
           </LogoWrapper>
 
           {/* <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

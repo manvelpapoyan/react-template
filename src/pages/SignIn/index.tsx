@@ -1,17 +1,20 @@
-import Typography from '@mui/material/Typography'
-import Box from '@mui/material/Box'
-import { Checkbox, FormControlLabel } from '@mui/material'
 import { useForm } from 'react-hook-form'
-import { useAppDispatch, useAppSelector } from '@store/hooks'
-import { loginThunk } from '@store/features/auth/auth.actions'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import { Checkbox, FormControlLabel } from '@mui/material'
 
-import Button from '@components/common/Button'
 import Input from '@components/common/Input'
+import { useAppDispatch } from '@store/hooks'
+import Button from '@components/common/Button'
+import LinkTo from '@components/common/LinkTo'
+import { PAGE_ROUTES_PUBLIC } from '@appTypes/enums/pages'
+import { loginThunk } from '@store/features/auth/auth.actions'
 import { Wrapper } from './styled'
 
 const defaultValues = {
   login: '',
-  password: ''
+  password: '',
+  rememberMe: false
 }
 
 const SignIn = () => {
@@ -46,7 +49,6 @@ const SignIn = () => {
       key: 'password',
       placeholder: 'Your Password',
       type: 'password',
-
       register: {
         ...register('password', {
           required: 'message password'
@@ -55,13 +57,8 @@ const SignIn = () => {
     }
   ]
 
-  const handleForm = (data: any) => {
-    dispatch(
-      loginThunk({
-        email: data.login,
-        password: data.password
-      })
-    )
+  const handleForm = ({ login, ...rest }: any) => {
+    dispatch(loginThunk({ email: login, ...rest }))
       .unwrap()
       .then(() => {
         reset()
@@ -72,16 +69,16 @@ const SignIn = () => {
     <Wrapper component='form' onSubmit={handleSubmit(handleForm)}>
       <Typography variant='h1'>Sign In</Typography>
       <Box>
-        {data.map((item) => {
-          return <Input errors={errors} {...item} />
-        })}
+        {data.map((item) => (
+          <Input errors={errors} {...item} />
+        ))}
       </Box>
       <Box>
-        <FormControlLabel control={<Checkbox defaultChecked />} label='Remember Me' />
+        <FormControlLabel label='Remember Me' control={<Checkbox {...register('rememberMe')} />} />
       </Box>
       <Button type='submit'>Login</Button>
       <Typography component='p' align='center'>
-        Forgot password?
+        <LinkTo href={PAGE_ROUTES_PUBLIC.FORGOT_PASSWORD}>Forgot password?</LinkTo>
       </Typography>
     </Wrapper>
   )

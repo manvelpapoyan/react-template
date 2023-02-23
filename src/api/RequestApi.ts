@@ -18,7 +18,11 @@ const headers: Readonly<Record<string, string | boolean>> = {
 
 const injectToken = (config: AxiosRequestConfig): AxiosRequestConfig => {
   try {
-    const token = StorageManager.getItem(StorageKeysEnum.ACCESS_TOKEN)
+    const storage = StorageManager.getString(StorageKeysEnum.REMEMBER_ME, 'local') as
+      | 'local'
+      | 'session'
+
+    const token = StorageManager.getString(StorageKeysEnum.ACCESS_TOKEN, storage)
 
     if (token != null) {
       // @ts-ignore

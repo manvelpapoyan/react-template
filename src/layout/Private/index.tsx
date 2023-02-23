@@ -4,24 +4,29 @@ import { Outlet, useNavigate } from 'react-router-dom'
 import Header from '@components/Header'
 import Content from '@components/Hocs/Content'
 import { RouteEnum } from '@appTypes/enums/global'
-import { useAppSelector } from '@store/hooks'
+import { PAGE_ROUTES_PUBLIC } from '@appTypes/enums/pages'
+import { useAppDispatch, useAppSelector } from '@store/hooks'
+import { profileThunk } from '@store/features/auth/auth.actions'
 
 function LayoutPrivate() {
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+  const login = useAppSelector((state) => state.auth.login)
   const user = useAppSelector((state) => state.auth.user)
 
-  const navigate = useNavigate()
-
   useEffect(() => {
-    if (user === null || !Object.keys(user).length) {
-      navigate('/auth/sign-in')
+    if (user === null) {
+      dispatch(profileThunk())
+        .unwrap()
+        .catch(() => navigate(PAGE_ROUTES_PUBLIC.SIGN_IN))
     }
-  }, [user])
+  }, [])
 
   return (
     <>
       <Header type={RouteEnum.PRIVATE} />
       <Content type={RouteEnum.PRIVATE}>
-        <Outlet />
+        {login.isLoading ? <div>Loading ...</div> : <Outlet />}
       </Content>
     </>
   )

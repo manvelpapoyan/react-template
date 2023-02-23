@@ -8,13 +8,12 @@ export const StyledWrapper = styled(Box)<{ type: RouteEnum }>(({ theme, type }) 
   overflow: 'hidden',
 
   '> .MuiBox-root': {
-    background: theme.palette.background.paper,
-    maxWidth: theme.breakpoints.values.xl,
     width: '100%',
-    maxHeight: '745px',
-    height: '100vh',
+    minHeight: '100vh',
     padding: '40px',
-    margin: '40px auto 40px auto'
+    margin: '40px auto 40px auto',
+    maxWidth: theme.breakpoints.values.xl,
+    background: theme.palette.background.paper
   },
 
   [theme.breakpoints.down('xl')]: {

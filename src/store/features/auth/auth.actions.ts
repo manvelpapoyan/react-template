@@ -9,13 +9,25 @@ export const loginThunk = createAsyncThunk(
   'auth/login',
   async (payload: ILoginPayload, { rejectWithValue }) => {
     try {
-      const response = await AuthService.login(payload)
+      const { rememberMe, ...payloadData } = payload
 
-      StorageManager.setString(StorageKeysEnum.ACCESS_TOKEN, response.data.data.accessToken)
-      StorageManager.setString(StorageKeysEnum.REFRESH_TOKEN, response.data.data.refreshToken)
+      const whereSave = rememberMe ? 'session' : 'local'
+      StorageManager.setString(StorageKeysEnum.REMEMBER_ME, whereSave, 'local')
+
+      const response = await AuthService.login(payloadData)
+
+      StorageManager.setString(
+        StorageKeysEnum.ACCESS_TOKEN,
+        response.data.data.accessToken,
+        whereSave
+      )
+      StorageManager.setString(
+        StorageKeysEnum.REFRESH_TOKEN,
+        response.data.data.accessToken,
+        whereSave
+      )
 
       const { data: user } = await AuthService.getProfile()
-      StorageManager.setItem(StorageKeysEnum.USER, user)
 
       return {
         ...response.data.data,
@@ -66,3 +78,15 @@ export const updatePasswordThunk = createAsyncThunk(
     // }
   }
 )
+
+export const profileThunk = createAsyncThunk('auth/profile', async (_, { rejectWithValue }) => {
+  try {
+    const { data: user } = await AuthService.getProfile()
+
+    return {
+      user
+    }
+  } catch (error: any) {
+    return rejectWithValue(error.data.details[0].message as string)
+  }
+})

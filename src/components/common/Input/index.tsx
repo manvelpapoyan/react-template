@@ -16,6 +16,7 @@ interface IInput {
 
 const Input = ({ label, register, errors, type, ...rest }: IInput) => {
   const [isEyeOpen, setEyeOpen] = useState(false)
+  const isPassword = type === 'password'
 
   return (
     <FormControl variant='standard'>
@@ -24,9 +25,9 @@ const Input = ({ label, register, errors, type, ...rest }: IInput) => {
       </InputLabel>
       <StyledInput
         error={!!errors[rest.name]}
-        type={type === 'password' ? (!isEyeOpen ? 'password' : 'text') : type}
+        type={isPassword ? (!isEyeOpen ? 'password' : 'text') : type}
         endAdornment={
-          type === 'password' ? (
+          isPassword ? (
             !isEyeOpen ? (
               <VisibilityOff onClick={() => setEyeOpen(!isEyeOpen)} />
             ) : (

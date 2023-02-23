@@ -12,7 +12,7 @@ export enum ACTION_STATUSES {
 export enum StorageKeysEnum {
   ACCESS_TOKEN = 'access_token',
   REFRESH_TOKEN = 'refresh_token',
-  USER = 'user'
+  REMEMBER_ME = 'remember_me'
 }
 
 export const ErrorMessages = {

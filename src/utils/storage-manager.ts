@@ -39,7 +39,7 @@ class StorageManager {
       }
 
       // eslint-disable-next-line consistent-return
-      return serializedState
+      return JSON.parse(serializedState)
     } catch (err) {
       // ignore write errors
     }

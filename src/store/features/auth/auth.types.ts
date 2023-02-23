@@ -18,6 +18,7 @@ export interface IAuthState {
 export interface ILoginPayload {
   email: string
   password: string
+  rememberMe?: boolean
 }
 export interface IRegisterPayload {
   email: string
